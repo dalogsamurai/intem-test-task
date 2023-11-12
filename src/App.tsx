@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { RouteObject, useRoutes } from "react-router-dom";
+import { TABLE_PATH } from "./routes/paths";
+import MainPage from "./pages/main.page";
+import TablePage from "./pages/table.page";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const routes: RouteObject[] = [
+		{
+			path: "/",
+			children: [
+				{ index: true, element: <MainPage /> },
+				{ path: TABLE_PATH, element: <TablePage /> },
+			],
+		},
+	];
+
+	const page = useRoutes(routes);
+
+	return <div className="App">{page}</div>;
 }
 
 export default App;
