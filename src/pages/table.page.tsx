@@ -1,9 +1,11 @@
 import Menu from "../components/menu.component";
+import Table from "../components/table.component";
 
 const TablePage = () => {
 	return (
-		<div className="">
+		<div style={{ display: "flex" }}>
 			<Menu />
+			<Table />
 		</div>
 	);
 };

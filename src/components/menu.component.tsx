@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
+import { menuItems } from "../constants";
 
 const Menu = () => {
-	const menuPoints = ["point1", "point2", "point3"];
-
 	return (
 		<div className="menu">
-			{menuPoints.map((point) => (
-				<Link to={`/${point}`}>
-					<div className="menu__point">{point}</div>
+			{menuItems.map((item) => (
+				<Link to={`/${item}`}>
+					<div className="menu__point">{item}</div>
 				</Link>
 			))}
 		</div>
