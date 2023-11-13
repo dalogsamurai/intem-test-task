@@ -15,7 +15,7 @@ const TableItem = ({ item }: Props) => {
 	return (
 		<>
 			{tableValues.map((value) => (
-				<td>{value}</td>
+				<td style={{ width: "200px", cursor: "pointer" }}>{value}</td>
 			))}
 		</>
 	);

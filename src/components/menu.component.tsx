@@ -3,10 +3,18 @@ import { menuItems } from "../constants";
 
 const Menu = () => {
 	return (
-		<div className="menu">
+		<div
+			style={{
+				padding: "20px",
+				display: "flex",
+				flexDirection: "column",
+				gap: "10px",
+				borderRight: "1px solid black",
+			}}
+		>
 			{menuItems.map((item) => (
 				<Link to={`/${item}`}>
-					<div className="menu__point">{item}</div>
+					<div style={{ fontSize: "20px" }}>{item}</div>
 				</Link>
 			))}
 		</div>

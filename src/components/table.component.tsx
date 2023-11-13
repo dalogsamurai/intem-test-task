@@ -22,10 +22,20 @@ const Table = () => {
 	}, [id]);
 
 	return (
-		<table className="people-list">
+		<table>
 			<tr>
 				{tableHeaders.map((header) => (
-					<th>{header}</th>
+					<th
+						style={{
+							fontWeight: "bold",
+							fontSize: "20px",
+							width: "100px",
+							textAlign: "start",
+							borderBottom: "1px solid black",
+						}}
+					>
+						{header}
+					</th>
 				))}
 			</tr>
 			{tableData.map((item) => (
