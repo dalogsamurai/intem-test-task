@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import TableData from "./table-data.component";
 
 interface Props {
 	// rome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -17,13 +18,7 @@ const TableItem = ({ item, tableId }: Props) => {
 	return (
 		<>
 			{tableValues.map((value) => (
-				<td
-					style={{ width: "200px", cursor: "pointer" }}
-					onClick={() => {
-						console.log(value);
-						console.log(typeof value);
-					}}
-				>{`${value}`}</td>
+				<TableData value={value} item={item} />
 			))}
 		</>
 	);

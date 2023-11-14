@@ -21,13 +21,6 @@ const Table = () => {
 		getTableData();
 	}, [id]);
 
-	//   TODO
-	const updateData = async () => {
-		// const res = await supabase.from(id!).update(tableValues);
-		// console.log(res);
-		//   .eq('id', 1)
-	};
-
 	return (
 		<div
 			style={{
@@ -59,12 +52,6 @@ const Table = () => {
 					</tr>
 				))}
 			</table>
-			<button
-				style={{ backgroundColor: "forestgreen", width: "200px" }}
-				onClick={() => updateData()}
-			>
-				Submit
-			</button>
 		</div>
 	);
 };
