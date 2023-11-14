@@ -21,6 +21,7 @@ const Table = () => {
 				setError(true);
 				return;
 			} else {
+				console.log(data);
 				setLoading(false);
 				setTableHeaders(Object.keys(data![0]));
 				setTableData(data!);
