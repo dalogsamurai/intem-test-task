@@ -36,6 +36,7 @@ const TableData = ({ item, value }: Props) => {
 
 		if (error) {
 			setError(true);
+			setLoading(false);
 			return;
 		} else {
 			setDisplayValue(formValue);
@@ -84,7 +85,7 @@ const TableData = ({ item, value }: Props) => {
 
 			{!(isInput || isLoading || isError) && `${displayValue}`}
 
-			{isInput && !isLoading && (
+			{isInput && !(isLoading || isError) && (
 				<div>
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<Controller
