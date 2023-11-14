@@ -23,7 +23,7 @@ const TableData = ({ item, value }: Props) => {
 
 		const { error } = await supabase
 			.from(id!)
-			.update({ ...item, [key!]: formValue })
+			.update({ ...item, [key]: formValue })
 			.eq("id", item.id);
 		if (!error) {
 			setDisplayValue(formValue);
@@ -32,7 +32,7 @@ const TableData = ({ item, value }: Props) => {
 	};
 
 	return (
-		//    rome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
+		// rome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
 		<td
 			style={{ width: "200px", cursor: "pointer" }}
 			onClick={() => {
