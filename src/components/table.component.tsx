@@ -4,14 +4,16 @@ import { useEffect, useState } from "react";
 import TableItem from "./table-item.component";
 import LoaderPlaceholder from "./loader/loader.component";
 import ErrorPlaceHolder from "./error.component";
+import useLoading from "../hooks/useLoading";
 
 const Table = () => {
 	const { id } = useParams();
 	// rome-ignore lint/suspicious/noExplicitAny: <explanation>
 	const [tableData, setTableData] = useState<any[]>([]);
 	const [tableHeaders, setTableHeaders] = useState<string[]>([]);
-	const [isLoading, setLoading] = useState(false);
-	const [isError, setError] = useState(false);
+	const { isLoading, isError, setError, setLoading } = useLoading();
+	// const [isLoading, setLoading] = useState(false);
+	// const [isError, setError] = useState(false);
 
 	const getTableData = async () => {
 		if (id) {
