@@ -2,18 +2,29 @@ import { useParams } from "react-router-dom";
 import { supabase } from "../api/supabase";
 import { useEffect, useState } from "react";
 import TableItem from "./table-item.component";
+import LoaderPlaceholder from "./loader/loader.component";
+import ErrorPlaceHolder from "./error.component";
 
 const Table = () => {
 	const { id } = useParams();
 	// rome-ignore lint/suspicious/noExplicitAny: <explanation>
 	const [tableData, setTableData] = useState<any[]>([]);
 	const [tableHeaders, setTableHeaders] = useState<string[]>([]);
+	const [isLoading, setLoading] = useState(false);
+	const [isError, setError] = useState(false);
 
 	const getTableData = async () => {
 		if (id) {
-			const { data } = await supabase.from(id).select();
-			setTableHeaders(Object.keys(data![0]));
-			setTableData(data!);
+			setLoading(true);
+			const { data, error } = await supabase.from(id).select();
+			if (error) {
+				setError(true);
+				return;
+			} else {
+				setLoading(false);
+				setTableHeaders(Object.keys(data![0]));
+				setTableData(data!);
+			}
 		}
 	};
 
@@ -30,28 +41,33 @@ const Table = () => {
 				alignItems: "end",
 			}}
 		>
-			<table>
-				<tr>
-					{tableHeaders.map((header) => (
-						<th
-							style={{
-								fontWeight: "bold",
-								fontSize: "20px",
-								width: "100px",
-								textAlign: "start",
-								borderBottom: "1px solid black",
-							}}
-						>
-							{header}
-						</th>
-					))}
-				</tr>
-				{tableData.map((item) => (
+			<LoaderPlaceholder isLoading={isLoading} />
+			<ErrorPlaceHolder isError={isError} />
+
+			{!(isLoading || isError) && (
+				<table>
 					<tr>
-						<TableItem item={item} tableId={id!} />
+						{tableHeaders.map((header) => (
+							<th
+								style={{
+									fontWeight: "bold",
+									fontSize: "20px",
+									width: "100px",
+									textAlign: "start",
+									borderBottom: "1px solid black",
+								}}
+							>
+								{header}
+							</th>
+						))}
 					</tr>
-				))}
-			</table>
+					{tableData.map((item) => (
+						<tr>
+							<TableItem item={item} tableId={id!} />
+						</tr>
+					))}
+				</table>
+			)}
 		</div>
 	);
 };
