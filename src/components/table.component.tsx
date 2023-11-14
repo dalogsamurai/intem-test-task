@@ -21,29 +21,51 @@ const Table = () => {
 		getTableData();
 	}, [id]);
 
+	//   TODO
+	const updateData = async () => {
+		// const res = await supabase.from(id!).update(tableValues);
+		// console.log(res);
+		//   .eq('id', 1)
+	};
+
 	return (
-		<table>
-			<tr>
-				{tableHeaders.map((header) => (
-					<th
-						style={{
-							fontWeight: "bold",
-							fontSize: "20px",
-							width: "100px",
-							textAlign: "start",
-							borderBottom: "1px solid black",
-						}}
-					>
-						{header}
-					</th>
-				))}
-			</tr>
-			{tableData.map((item) => (
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				gap: "50px",
+				alignItems: "end",
+			}}
+		>
+			<table>
 				<tr>
-					<TableItem item={item} />
+					{tableHeaders.map((header) => (
+						<th
+							style={{
+								fontWeight: "bold",
+								fontSize: "20px",
+								width: "100px",
+								textAlign: "start",
+								borderBottom: "1px solid black",
+							}}
+						>
+							{header}
+						</th>
+					))}
 				</tr>
-			))}
-		</table>
+				{tableData.map((item) => (
+					<tr>
+						<TableItem item={item} tableId={id!} />
+					</tr>
+				))}
+			</table>
+			<button
+				style={{ backgroundColor: "forestgreen", width: "200px" }}
+				onClick={() => updateData()}
+			>
+				Submit
+			</button>
+		</div>
 	);
 };
 
