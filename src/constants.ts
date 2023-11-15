@@ -1,4 +1,3 @@
-// TODO add items
 export const menuItems = [
 	"user",
 	"role",
@@ -7,4 +6,7 @@ export const menuItems = [
 	"rate",
 	"job_list",
 	"girlfiend",
+	"phone_number",
+	"salary",
+	"gender",
 ];
