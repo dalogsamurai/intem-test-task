@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 Integration with <a href="https://supabase.com/">Supabase</a>.
+<br/>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
